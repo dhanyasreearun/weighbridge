@@ -21,6 +21,16 @@ export const data = [
         icon: <ProjectIcon />,
         link: "/vehiclemaster",
       },
+      {
+        title: "Customer Master",
+        icon: <ProjectIcon />,
+        link: "/customermaster",
+      },
+      {
+        title: "Weighing Process",
+        icon: <ProjectIcon />,
+        link: "/weighingprocess",
+      },
     ],
   },
   {

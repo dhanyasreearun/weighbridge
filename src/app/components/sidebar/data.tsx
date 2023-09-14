@@ -32,6 +32,16 @@ export const data = [
         link: "/materialmaster",
       },
       {
+        title: "Transporter Master",
+        icon: <ProjectIcon />,
+        link: "/transportermaster",
+      },
+      {
+        title: "Driver Master",
+        icon: <ProjectIcon />,
+        link: "/drivermaster",
+      },
+      {
         title: "Weighing Process",
         icon: <ProjectIcon />,
         link: "/weighingprocess",

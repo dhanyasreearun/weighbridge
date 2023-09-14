@@ -13,6 +13,8 @@ export default function ProjectsPage() {
   const [vechicleOptions, setVehicleOptions] = React.useState([]);
   const [customerOptions, setcustomerOptions] = React.useState([]);
   const [materialOptions, setmaterialOptions] = React.useState([]);
+  const [transporterOptions, setransporterOptions] = React.useState([]);
+  const [driverOptions, setDriverOptions] = React.useState([]);
 
   useEffect(() => {
     axios
@@ -33,6 +35,20 @@ export default function ProjectsPage() {
       .get("api/vehicle/materialmaster")
       .then((response) => {
         setmaterialOptions(response.data.material);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get("api/vehicle/transportermaster")
+      .then((response) => {
+        setransporterOptions(response.data.transporter);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get("api/vehicle/drivermaster")
+      .then((response) => {
+        setDriverOptions(response.data.driver);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -96,6 +112,38 @@ export default function ProjectsPage() {
                   {materialOptions.map((option) => (
                     <option key={option._id} value={option.materialname}>
                       {option.materialname}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Transporter Name
+                </label>
+                <select
+                  name="transportername"
+                  id="transportername"
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {transporterOptions.map((option) => (
+                    <option key={option._id} value={option.transportername}>
+                      {option.transportername}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Driver Name
+                </label>
+                <select
+                  name="drivername"
+                  id="drivername"
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {driverOptions.map((option) => (
+                    <option key={option._id} value={option.drivername}>
+                      {option.drivername}
                     </option>
                   ))}
                 </select>

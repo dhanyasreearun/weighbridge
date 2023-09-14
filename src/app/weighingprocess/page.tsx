@@ -27,7 +27,10 @@ export default function ProjectsPage() {
 
   return (
     <ProfileLayout>
-      <Content title="Vehicle Master" details="Fill details about the vehicle">
+      <Content
+        title="Weighing Process"
+        details="Fill details from the existing lists"
+      >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">
@@ -35,22 +38,21 @@ export default function ProjectsPage() {
                 <label className="block text-sm font-medium leading-6 text-gray-900">
                   Vehicle Number
                 </label>
-                <div className="mt-2">
-                  <select
-                    name="categories"
-                    id="categories"
-                    onChange={(e) => setVehicleOptions(e.target.value)}
-                  >
-                    {vechicleOptions.map((option) => (
-                      <option
-                        key={option.vehiclenumber}
-                        value={option.vehiclenumber}
-                      >
-                        {option.vehiclenumber}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <select
+                  name="vehiclenumber"
+                  id="vehiclenumber"
+                  onChange={(e) => setVehicleOptions(e.target.value)}
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {vechicleOptions.map((option) => (
+                    <option
+                      key={option.vehiclenumber}
+                      value={option.vehiclenumber}
+                    >
+                      {option.vehiclenumber}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>

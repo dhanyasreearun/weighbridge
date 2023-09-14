@@ -5,10 +5,6 @@ import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-interface ChildrenProps {
-  children: React.ReactNode;
-}
-
 export default function ProjectsPage() {
   const [customermaster, setVehicleMaster] = React.useState({
     customerid: "",

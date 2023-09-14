@@ -11,12 +11,28 @@ interface ChildrenProps {
 
 export default function ProjectsPage() {
   const [vechicleOptions, setVehicleOptions] = React.useState([]);
+  const [customerOptions, setcustomerOptions] = React.useState([]);
+  const [materialOptions, setmaterialOptions] = React.useState([]);
 
   useEffect(() => {
     axios
       .get("api/vehicle/vehiclemaster")
       .then((response) => {
         setVehicleOptions(response.data.vehicles);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get("api/vehicle/customermaster")
+      .then((response) => {
+        setcustomerOptions(response.data.customer);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get("api/vehicle/materialmaster")
+      .then((response) => {
+        setmaterialOptions(response.data.material);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -45,11 +61,41 @@ export default function ProjectsPage() {
                   className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
                 >
                   {vechicleOptions.map((option) => (
-                    <option
-                      key={option.vehiclenumber}
-                      value={option.vehiclenumber}
-                    >
+                    <option key={option._id} value={option.vehiclenumber}>
                       {option.vehiclenumber}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Customer Name
+                </label>
+                <select
+                  name="customername"
+                  id="customername"
+                  onChange={(e) => setcustomerOptions(e.target.value)}
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {customerOptions.map((option) => (
+                    <option key={option._id} value={option.customername}>
+                      {option.customername}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Material Name
+                </label>
+                <select
+                  name="materialname"
+                  id="materialname"
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {materialOptions.map((option) => (
+                    <option key={option._id} value={option.materialname}>
+                      {option.materialname}
                     </option>
                   ))}
                 </select>

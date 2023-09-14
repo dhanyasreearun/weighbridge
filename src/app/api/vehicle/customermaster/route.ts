@@ -34,3 +34,15 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({error: error.message}, {status: 500})
     }
 }
+
+export async function GET() {
+    try {
+        const customer = await CustomerMaster.find();
+        return NextResponse.json({
+            customer
+        })
+
+    } catch ( error: any) {
+        return NextResponse.json({error: error.message}, {status: 500})
+    }
+}

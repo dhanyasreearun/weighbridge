@@ -1,27 +1,48 @@
+"use client";
+import React from "react";
 import { Sidebar } from "../components/sidebar/sideBar";
 import { TopBar } from "../components/topbar/topbar";
+import { Overlay } from "../components/overlay/overlay";
+import {
+  DashboardProvider,
+  useDashboardContext,
+} from "../components/provider/provider";
 
-interface ProfileProps {
+interface ChildrenProps {
   children: React.ReactNode;
 }
 
 const style = {
-  mainContainer:
-    "flex flex-col w-full h-screen pl-0 lg:space-y-4 lg:w-[calc(100%-16rem)]",
-  container: "bg-white h-screen overflow-hidden relative",
-  main: "bg-white h-screen overflow-auto pb-36 pt-4 px-2 md:pb-8 md:px-4 lg:px-6 lg:rounded-tl-3xl",
+  open: "lg:w-full",
+  close: "lg:pl-4 lg:lg:w-[calc(100%-16rem)]",
+  mainContainer: "flex flex-col w-full h-screen pl-0 lg:space-y-4",
+  container: "bg-gray-100 h-screen overflow-hidden relative lg:p-4",
+  main: "h-screen overflow-auto pb-36 pt-8 px-2 md:pb-8 md:pt-4 lg:pt-0",
 };
 
-export default function ProfilePage(props: ProfileProps) {
+const Content = (props: ChildrenProps) => {
+  const { sidebarOpen } = useDashboardContext();
   return (
     <div className={style.container}>
       <div className="flex items-start">
+        <Overlay />
         <Sidebar mobileOrientation="end" />
-        <div className={style.mainContainer}>
+        <div
+          className={`${style.mainContainer} 
+             ${sidebarOpen ? style.open : style.close}`}
+        >
           <TopBar />
-          <main className={style.main}>{props.children}</main>
+          <main className={style.main}>{props.children}</main>;
         </div>
       </div>
     </div>
+  );
+};
+
+export default function ProfileLayout(props: ChildrenProps) {
+  return (
+    <DashboardProvider>
+      <Content>{props.children}</Content>
+    </DashboardProvider>
   );
 }

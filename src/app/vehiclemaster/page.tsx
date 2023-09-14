@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 interface ChildrenProps {
   children: React.ReactNode;
@@ -23,8 +24,14 @@ export default function ProjectsPage() {
   const saveVehicleMaster = async () => {
     try {
       setLoading(true);
+      const response = await axios.post(
+        "api/vehicle/vehiclemaster",
+        vehiclemaster
+      );
+      console.log("Vehicle master saved", response.data);
+      toast.success("Vehicle master saved");
     } catch (error: any) {
-      console.log("Sign up failed", error.message);
+      console.log("Saving vehicle master failed", error.message);
 
       toast.error(error.message);
     } finally {
@@ -141,6 +148,18 @@ export default function ProjectsPage() {
                 >
                   Save
                 </button>
+                {loading && (
+                  <div className="mt-10 text-center text-sm text-gray-500">
+                    <div
+                      className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                      role="status"
+                    >
+                      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                        Loading...
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
             </form>
           </div>

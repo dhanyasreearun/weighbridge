@@ -26,7 +26,7 @@ export default function LoginPage() {
     } catch (error: any) {
       console.log("Login failed", error.message);
 
-      toast.error(error.message);
+      toast.error("Invalid username or password. Please try again");
     } finally {
       setLoading(false);
     }

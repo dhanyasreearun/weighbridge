@@ -16,6 +16,7 @@ export default function ProjectsPage() {
   const [transporterOptions, setransporterOptions] = React.useState([]);
   const [driverOptions, setDriverOptions] = React.useState([]);
   const [destinationOptions, setDestinationOptions] = React.useState([]);
+  const [sourceOptions, setSourceOptions] = React.useState([]);
 
   useEffect(() => {
     axios
@@ -57,6 +58,13 @@ export default function ProjectsPage() {
       .get("api/vehicle/destinationmaster")
       .then((response) => {
         setDestinationOptions(response.data.destination);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get("api/vehicle/sourcemaster")
+      .then((response) => {
+        setSourceOptions(response.data.source);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -168,6 +176,22 @@ export default function ProjectsPage() {
                   {destinationOptions.map((option) => (
                     <option key={option._id} value={option.destinationname}>
                       {option.destinationname}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Source Name
+                </label>
+                <select
+                  name="sourcename"
+                  id="sourcename"
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {sourceOptions.map((option) => (
+                    <option key={option._id} value={option.sourcename}>
+                      {option.sourcename}
                     </option>
                   ))}
                 </select>

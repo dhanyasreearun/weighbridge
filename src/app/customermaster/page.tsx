@@ -4,6 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { CustomerIcon } from "../components/sidebar/icons/customerIcon";
 
 export default function ProjectsPage() {
   const [customermaster, setVehicleMaster] = React.useState({
@@ -57,6 +58,7 @@ export default function ProjectsPage() {
       <Content
         title="Customer Master"
         details="Fill details about the customer"
+        icon={<CustomerIcon />}
       >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

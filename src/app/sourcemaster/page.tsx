@@ -4,6 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { SourceIcon } from "../components/sidebar/icons/sourceIcon";
 
 export default function ProjectsPage() {
   const [sourcemaster, setsourceMaster] = React.useState({
@@ -46,7 +47,11 @@ export default function ProjectsPage() {
 
   return (
     <ProfileLayout>
-      <Content title="Source Master" details="Fill details about the source">
+      <Content
+        title="Source Master"
+        details="Fill details about the source"
+        icon={<SourceIcon />}
+      >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">

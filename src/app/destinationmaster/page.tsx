@@ -4,6 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { DestinationIcon } from "../components/sidebar/icons/destinationIcon";
 
 export default function ProjectsPage() {
   const [destinationmaster, setdestinationMaster] = React.useState({
@@ -49,6 +50,7 @@ export default function ProjectsPage() {
       <Content
         title="Destination Master"
         details="Fill details about the destination"
+        icon={<DestinationIcon />}
       >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

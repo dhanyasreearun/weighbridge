@@ -4,6 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { TransporterIcon } from "../components/sidebar/icons/transporterIcon";
 
 export default function ProjectsPage() {
   const [transportermaster, setTransporterMaster] = React.useState({
@@ -49,6 +50,7 @@ export default function ProjectsPage() {
       <Content
         title="Transporter Master"
         details="Fill details about the transporter"
+        icon={<TransporterIcon />}
       >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

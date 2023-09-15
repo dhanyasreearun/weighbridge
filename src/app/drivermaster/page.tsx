@@ -4,6 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { DriverIcon } from "../components/sidebar/icons/driverIcon";
 
 export default function ProjectsPage() {
   const [drivermaster, setdriverMaster] = React.useState({
@@ -46,7 +47,11 @@ export default function ProjectsPage() {
 
   return (
     <ProfileLayout>
-      <Content title="Driver Master" details="Fill details about the driver">
+      <Content
+        title="Driver Master"
+        details="Fill details about the driver"
+        icon={<DriverIcon />}
+      >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">

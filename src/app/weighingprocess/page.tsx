@@ -4,10 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-
-interface ChildrenProps {
-  children: React.ReactNode;
-}
+import { WeighingIcon } from "../components/sidebar/icons/weighingIcon";
 
 export default function ProjectsPage() {
   const [vechicleOptions, setVehicleOptions] = React.useState([]);
@@ -78,6 +75,7 @@ export default function ProjectsPage() {
       <Content
         title="Weighing Process"
         details="Fill details from the existing lists"
+        icon={<WeighingIcon />}
       >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

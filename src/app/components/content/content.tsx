@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 interface ContentProps {
   title: string;
   details: string;
+  icon: ReactNode;
   children: ReactNode;
 }
 
@@ -15,7 +16,7 @@ export function Content(props: ContentProps) {
             <div className="mb-6 flex items-center justify-between">
               <div className="flex items-center">
                 <span className="relative rounded-xl bg-blue-100 p-2 font-bold">
-                  V
+                  {props.icon}
                 </span>
                 <div className="flex flex-col">
                   <span className="ml-2 font-bold text-black">

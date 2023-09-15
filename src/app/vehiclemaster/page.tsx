@@ -4,6 +4,7 @@ import { Content } from "../components/content/content";
 import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { VehicleIcon } from "../components/sidebar/icons/vehicleIcon";
 
 interface ChildrenProps {
   children: React.ReactNode;
@@ -54,7 +55,11 @@ export default function ProjectsPage() {
 
   return (
     <ProfileLayout>
-      <Content title="Vehicle Master" details="Fill details about the vehicle">
+      <Content
+        title="Vehicle Master"
+        details="Fill details about the vehicle"
+        icon={<VehicleIcon />}
+      >
         <div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">

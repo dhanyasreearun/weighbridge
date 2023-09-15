@@ -15,6 +15,7 @@ export default function ProjectsPage() {
   const [materialOptions, setmaterialOptions] = React.useState([]);
   const [transporterOptions, setransporterOptions] = React.useState([]);
   const [driverOptions, setDriverOptions] = React.useState([]);
+  const [destinationOptions, setDestinationOptions] = React.useState([]);
 
   useEffect(() => {
     axios
@@ -49,6 +50,13 @@ export default function ProjectsPage() {
       .get("api/vehicle/drivermaster")
       .then((response) => {
         setDriverOptions(response.data.driver);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get("api/vehicle/destinationmaster")
+      .then((response) => {
+        setDestinationOptions(response.data.destination);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -148,7 +156,22 @@ export default function ProjectsPage() {
                   ))}
                 </select>
               </div>
-
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Deatination Name
+                </label>
+                <select
+                  name="destinationname"
+                  id="destinationname"
+                  className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+                >
+                  {destinationOptions.map((option) => (
+                    <option key={option._id} value={option.destinationname}>
+                      {option.destinationname}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <button
                   className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${

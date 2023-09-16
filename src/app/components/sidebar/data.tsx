@@ -65,49 +65,4 @@ export const data = [
       },
     ],
   },
-  {
-    section: "Section2",
-    content: [
-      {
-        title: "My tasks",
-        icon: <TaskIcon />,
-        link: "/admin/tasks",
-      },
-      {
-        title: "Calendar",
-        icon: <CalendarIcon />,
-        link: "/admin/calendar",
-      },
-      {
-        title: "Time manage",
-        icon: <TimeManageIcon />,
-        link: "/admin/time-manage",
-      },
-    ],
-  },
-  {
-    section: "Section3",
-    content: [
-      {
-        title: "Reports",
-        icon: <ReportIcon />,
-        link: "/admin/reports",
-      },
-      {
-        title: "Settings",
-        icon: <SettingsIcon />,
-        link: "/admin/settings",
-      },
-      {
-        title: "Documentation",
-        icon: <DocIcon />,
-        link: "/admin/documentation",
-      },
-      {
-        title: "Logout",
-        icon: <DocIcon />,
-        link: "/logout",
-      },
-    ],
-  },
 ];

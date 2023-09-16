@@ -7,7 +7,7 @@ import axios from "axios";
 import { CustomerIcon } from "../components/sidebar/icons/customerIcon";
 
 export default function ProjectsPage() {
-  const [customermaster, setVehicleMaster] = React.useState({
+  const [customermaster, setCustomerMaster] = React.useState({
     customerid: "",
     customername: "",
     customertype: "",
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
                     name="customerid"
                     type="text"
                     onChange={(e) =>
-                      setVehicleMaster({
+                      setCustomerMaster({
                         ...customermaster,
                         customerid: e.target.value,
                       })
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                     name="customername"
                     type="text"
                     onChange={(e) =>
-                      setVehicleMaster({
+                      setCustomerMaster({
                         ...customermaster,
                         customername: e.target.value,
                       })
@@ -116,7 +116,7 @@ export default function ProjectsPage() {
                       id="customer"
                       value="Customer"
                       onChange={(e) =>
-                        setVehicleMaster({
+                        setCustomerMaster({
                           ...customermaster,
                           customertype: e.target.value,
                         })
@@ -133,7 +133,7 @@ export default function ProjectsPage() {
                       name="customertype"
                       id="supplier"
                       onChange={(e) =>
-                        setVehicleMaster({
+                        setCustomerMaster({
                           ...customermaster,
                           customertype: e.target.value,
                         })
@@ -156,7 +156,7 @@ export default function ProjectsPage() {
                     name="customeraddress"
                     type="text"
                     onChange={(e) =>
-                      setVehicleMaster({
+                      setCustomerMaster({
                         ...customermaster,
                         customeraddress: e.target.value,
                       })
@@ -176,7 +176,7 @@ export default function ProjectsPage() {
                     name="customercountry"
                     type="text"
                     onChange={(e) =>
-                      setVehicleMaster({
+                      setCustomerMaster({
                         ...customermaster,
                         customercountry: e.target.value,
                       })
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
                     name="customertelephone"
                     type="text"
                     onChange={(e) =>
-                      setVehicleMaster({
+                      setCustomerMaster({
                         ...customermaster,
                         customertelephone: e.target.value,
                       })

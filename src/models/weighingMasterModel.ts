@@ -39,6 +39,10 @@ const weighingMasterSchema = new  mongoose.Schema({
         type: String,
         required: [true, "Please provide netweight"],
     },
+    materialrate: {
+        type: String,
+        required: [true, "Please provide materialrate"],
+    },
 });
 
 const WeighingMaster = mongoose.models.weighingmaster  || mongoose.model

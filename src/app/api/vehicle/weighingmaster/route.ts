@@ -7,7 +7,7 @@ connect();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const {vehiclenumber,customername,materialname,transportername,drivername,destinationname,sourcename,weighingtype,netweight} = reqBody;
+        const {vehiclenumber,customername,materialname,transportername,drivername,destinationname,sourcename,weighingtype,netweight,materialrate} = reqBody;
 
         const newWeighingMaster = new WeighingMaster( {
             vehiclenumber,
@@ -18,7 +18,8 @@ export async function POST(request: NextRequest) {
             destinationname,
             sourcename,
             weighingtype,
-            netweight
+            netweight,
+            materialrate,
         });
 
         const savedWeighingMaster = await newWeighingMaster.save().catch((error:any) => {

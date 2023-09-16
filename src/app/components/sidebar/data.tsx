@@ -21,7 +21,7 @@ export const data = [
       {
         title: "Dashboard",
         icon: <HomeIcon />,
-        link: "/",
+        link: "/dashboard",
       },
       {
         title: "Vehicle Master",

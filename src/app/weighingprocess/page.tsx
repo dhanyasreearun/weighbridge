@@ -15,6 +15,8 @@ export default function ProjectsPage() {
   const [destinationOptions, setDestinationOptions] = React.useState([]);
   const [sourceOptions, setSourceOptions] = React.useState([]);
 
+  const [hasLoaded, setHasLoaded] = React.useState(false);
+
   const [weighingMaster, setWeighingMaster] = React.useState({
     vehiclenumber: "",
     customername: "",
@@ -25,57 +27,61 @@ export default function ProjectsPage() {
     sourcename: "",
     weighingtype: "",
     netweight: "",
+    materialrate: "",
   });
 
   useEffect(() => {
-    axios
-      .get("api/vehicle/vehiclemaster")
-      .then((response) => {
-        setVehicleOptions(response.data.vehicles);
-      })
-      .catch((error) => console.log(error));
+    if (!hasLoaded) {
+      axios
+        .get("api/vehicle/vehiclemaster")
+        .then((response) => {
+          setVehicleOptions(response.data.vehicles);
+        })
+        .catch((error) => console.log(error));
 
-    axios
-      .get("api/vehicle/customermaster")
-      .then((response) => {
-        setcustomerOptions(response.data.customer);
-      })
-      .catch((error) => console.log(error));
+      axios
+        .get("api/vehicle/customermaster")
+        .then((response) => {
+          setcustomerOptions(response.data.customer);
+        })
+        .catch((error) => console.log(error));
 
-    axios
-      .get("api/vehicle/materialmaster")
-      .then((response) => {
-        setmaterialOptions(response.data.material);
-      })
-      .catch((error) => console.log(error));
+      axios
+        .get("api/vehicle/materialmaster")
+        .then((response) => {
+          setmaterialOptions(response.data.material);
+        })
+        .catch((error) => console.log(error));
 
-    axios
-      .get("api/vehicle/transportermaster")
-      .then((response) => {
-        setransporterOptions(response.data.transporter);
-      })
-      .catch((error) => console.log(error));
+      axios
+        .get("api/vehicle/transportermaster")
+        .then((response) => {
+          setransporterOptions(response.data.transporter);
+        })
+        .catch((error) => console.log(error));
 
-    axios
-      .get("api/vehicle/drivermaster")
-      .then((response) => {
-        setDriverOptions(response.data.driver);
-      })
-      .catch((error) => console.log(error));
+      axios
+        .get("api/vehicle/drivermaster")
+        .then((response) => {
+          setDriverOptions(response.data.driver);
+        })
+        .catch((error) => console.log(error));
 
-    axios
-      .get("api/vehicle/destinationmaster")
-      .then((response) => {
-        setDestinationOptions(response.data.destination);
-      })
-      .catch((error) => console.log(error));
+      axios
+        .get("api/vehicle/destinationmaster")
+        .then((response) => {
+          setDestinationOptions(response.data.destination);
+        })
+        .catch((error) => console.log(error));
 
-    axios
-      .get("api/vehicle/sourcemaster")
-      .then((response) => {
-        setSourceOptions(response.data.source);
-      })
-      .catch((error) => console.log(error));
+      axios
+        .get("api/vehicle/sourcemaster")
+        .then((response) => {
+          setSourceOptions(response.data.source);
+        })
+        .catch((error) => console.log(error));
+      setHasLoaded(true);
+    }
 
     if (
       weighingMaster.vehiclenumber.length > 0 &&
@@ -189,6 +195,10 @@ export default function ProjectsPage() {
                     setWeighingMaster({
                       ...weighingMaster,
                       materialname: e.target.value,
+                      materialrate:
+                        e.target.options[e.target.selectedIndex].getAttribute(
+                          "data-rate"
+                        ),
                     })
                   }
                   className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
@@ -198,7 +208,11 @@ export default function ProjectsPage() {
                     Please select a value
                   </option>
                   {materialOptions.map((option) => (
-                    <option key={option._id} value={option.materialname}>
+                    <option
+                      key={option._id}
+                      value={option.materialname}
+                      data-rate={option.materialrate}
+                    >
                       {option.materialname}
                     </option>
                   ))}

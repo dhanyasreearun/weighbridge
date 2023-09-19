@@ -22,7 +22,7 @@ export default function LoginPage() {
 
       const response = await axios.post("api/users/login", user);
       console.log("login success", response.data);
-      router.push("/profile");
+      router.push("/dashboard");
     } catch (error: any) {
       console.log("Login failed", error.message);
 
@@ -78,7 +78,7 @@ export default function LoginPage() {
               </label>
               <div className="text-sm">
                 <a
-                  href="#"
+                  href="/forgotpassword"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?

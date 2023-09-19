@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { SourceIcon } from "../components/sidebar/icons/sourceIcon";
 
-export default function ProjectsPage() {
+export default function Source() {
   const [sourcemaster, setsourceMaster] = React.useState({
     sourceid: "",
     sourcename: "",

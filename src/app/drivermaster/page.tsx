@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { DriverIcon } from "../components/sidebar/icons/driverIcon";
 
-export default function ProjectsPage() {
+export default function Driver() {
   const [drivermaster, setdriverMaster] = React.useState({
     driverid: "",
     drivername: "",

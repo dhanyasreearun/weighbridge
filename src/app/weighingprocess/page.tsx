@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { WeighingIcon } from "../components/sidebar/icons/weighingIcon";
 
-export default function ProjectsPage() {
+export default function Weighing() {
   const [vechicleOptions, setVehicleOptions] = React.useState([]);
   const [customerOptions, setcustomerOptions] = React.useState([]);
   const [materialOptions, setmaterialOptions] = React.useState([]);

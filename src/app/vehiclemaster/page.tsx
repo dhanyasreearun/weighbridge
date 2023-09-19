@@ -6,11 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { VehicleIcon } from "../components/sidebar/icons/vehicleIcon";
 
-interface ChildrenProps {
-  children: React.ReactNode;
-}
-
-export default function ProjectsPage() {
+export default function Vehicle() {
   const [vehiclemaster, setVehicleMaster] = React.useState({
     vehiclenumber: "",
     vehicleowner: "",

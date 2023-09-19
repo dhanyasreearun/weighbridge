@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { MaterialIcon } from "../components/sidebar/icons/materialIcon";
 
-export default function ProjectsPage() {
+export default function Material() {
   const [materialmaster, setMaterialMaster] = React.useState({
     materialid: "",
     materialname: "",

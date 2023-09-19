@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { CustomerIcon } from "../components/sidebar/icons/customerIcon";
 
-export default function ProjectsPage() {
+export default function Customer() {
   const [customermaster, setCustomerMaster] = React.useState({
     customerid: "",
     customername: "",

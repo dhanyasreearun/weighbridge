@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { TransporterIcon } from "../components/sidebar/icons/transporterIcon";
 
-export default function ProjectsPage() {
+export default function Transporter() {
   const [transportermaster, setTransporterMaster] = React.useState({
     transporterid: "",
     transportername: "",

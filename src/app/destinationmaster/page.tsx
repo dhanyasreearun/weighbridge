@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { DestinationIcon } from "../components/sidebar/icons/destinationIcon";
 
-export default function ProjectsPage() {
+export default function Destination() {
   const [destinationmaster, setdestinationMaster] = React.useState({
     destinationid: "",
     destinationname: "",

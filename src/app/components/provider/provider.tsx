@@ -20,6 +20,7 @@ export function DashboardProvider({ children }: DashboardProviderProps) {
   const router = useRouter();
 
   const openSidebar = React.useCallback(() => {
+    console.log("worked");
     setSidebarOpen(true);
   }, []);
 

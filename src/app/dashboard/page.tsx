@@ -5,6 +5,8 @@ import ProfileLayout from "../profile/page";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { DestinationIcon } from "../components/sidebar/icons/destinationIcon";
+import { renderToStaticMarkup } from "react-dom/server";
+import html2pdf from "html2pdf.js";
 
 export default function Dashboard() {
   const [dashboardOptions, setDashboardOptions] = React.useState([]);
@@ -18,6 +20,88 @@ export default function Dashboard() {
       .catch((error) => console.log(error));
   }, []);
 
+  const Report = ({ item }) => {
+    return (
+      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-8">
+        <h1 className="text-2xl font-semibold mb-4">Invoice</h1>
+        <div className="flex justify-between mb-4">
+          <div>
+            <p className="text-sm">From:</p>
+            <p className="font-semibold">Amrita Weighbridge</p>
+            <p>Amrita Ahead</p>
+            <p>Kollam Kerala</p>
+          </div>
+          <div>
+            <p className="text-sm">To:</p>
+            <p className="font-semibold">{item.customername}</p>
+          </div>
+        </div>
+        <div className="flex justify-between mb-4">
+          <div>
+            <p className="text-sm">Source:</p>
+            <p className="font-semibold">{item.sourcename}</p>
+          </div>
+          <div>
+            <p className="text-sm">Destination:</p>
+            <p className="font-semibold">{item.destinationname}</p>
+          </div>
+          <div>
+            <p className="text-sm">Vehicle:</p>
+            <p className="font-semibold">{item.vehiclenumber}</p>
+          </div>
+        </div>
+        <table className="w-full mb-4">
+          <thead>
+            <tr>
+              <th className="text-left">Material</th>
+              <th className="text-right">Quantity</th>
+              <th className="text-right">Price</th>
+              <th className="text-right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{item.materialname}</td>
+              <td className="text-right">{item.netweight}</td>
+              <td className="text-right">{item.materialrate}</td>
+              <td className="text-right">
+                {item.netweight * item.materialrate}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="flex justify-end">
+          <div className="w-1/2">
+            <p className="text-right">
+              Subtotal: {item.netweight * item.materialrate}
+            </p>
+            <p className="text-right">
+              Tax (10%): {item.netweight * item.materialrate * 0.1}
+            </p>
+            <p className="text-right font-semibold text-xl mt-2">
+              Total:{" "}
+              {item.netweight * item.materialrate +
+                item.netweight * item.materialrate * 0.1}
+            </p>
+          </div>
+        </div>
+        <div className="mt-8">
+          <p className="text-sm">Payment Instructions:</p>
+          <p className="text-gray-600">
+            Please make payment to the following bank account:
+          </p>
+          <p className="text-gray-600">Bank Name: State Bank Of India</p>
+          <p className="text-gray-600">Account Number: 123456</p>
+        </div>
+      </div>
+    );
+  };
+
+  const handleDownloadPDF = async (item) => {
+    const html = renderToStaticMarkup(<Report item={item} />);
+    html2pdf().from(html).save();
+  };
+
   const [loading, setLoading] = React.useState(false);
 
   return (
@@ -28,9 +112,9 @@ export default function Dashboard() {
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <ul>
-                  {dashboardOptions.map((option) => (
+                  {dashboardOptions.map((option, index) => (
                     <li
-                      key={option._id}
+                      key={index}
                       className="flex items-center justify-between border-b-2 border-gray-100 py-3 text-gray-600"
                     >
                       <div className="flex items-center justify-start text-sm">
@@ -124,6 +208,11 @@ export default function Dashboard() {
                             </span>
                           </div>
                         </span>
+                      </div>
+                      <div>
+                        <a onClick={() => handleDownloadPDF(option)}>
+                          Download
+                        </a>
                       </div>
                     </li>
                   ))}

@@ -112,113 +112,119 @@ export default function Dashboard() {
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <ul>
-                  {dashboardOptions.map((option, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center justify-between border-b-2 border-gray-100 py-3 text-gray-600"
-                    >
-                      <div className="flex items-center justify-start text-sm">
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              Vehicle
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.vehiclenumber}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              Customer
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.customername}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              From
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.sourcename}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              To
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.destinationname}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              Driver
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.drivername}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              Material
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.materialname}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              WeighingType
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.weighingtype}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              Net Weight
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.netweight}
-                            </span>
-                          </div>
-                        </span>
-                        <span className="mx-5">
-                          <div className="flex flex-col">
-                            <span className="ml-2 text-sm text-gray-400">
-                              Total Cost
-                            </span>
-                            <span className="ml-2 text-sm font-semibold text-gray-900">
-                              {option.netweight * option.materialrate}
-                            </span>
-                          </div>
-                        </span>
-                      </div>
-                      <div>
-                        <a
-                          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50"
-                          onClick={() => handleDownloadPDF(option)}
-                        >
-                          Invoice
-                        </a>
-                      </div>
+                  {dashboardOptions.length > 0 ? (
+                    dashboardOptions.map((option, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center justify-between border-b-2 border-gray-100 py-3 text-gray-600"
+                      >
+                        <div className="flex items-center justify-start text-sm">
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                Vehicle
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.vehiclenumber}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                Customer
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.customername}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                From
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.sourcename}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                To
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.destinationname}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                Driver
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.drivername}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                Material
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.materialname}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                WeighingType
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.weighingtype}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                Net Weight
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.netweight}
+                              </span>
+                            </div>
+                          </span>
+                          <span className="mx-5">
+                            <div className="flex flex-col">
+                              <span className="ml-2 text-sm text-gray-400">
+                                Total Cost
+                              </span>
+                              <span className="ml-2 text-sm font-semibold text-gray-900">
+                                {option.netweight * option.materialrate}
+                              </span>
+                            </div>
+                          </span>
+                        </div>
+                        <div>
+                          <a
+                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50"
+                            onClick={() => handleDownloadPDF(option)}
+                          >
+                            Invoice
+                          </a>
+                        </div>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-center text-gray-500">
+                      Weighing details yet to be added
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
               {loading && (

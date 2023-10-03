@@ -63,6 +63,11 @@ export const data = [
         icon: <WeighingIcon />,
         link: "/weighingprocess",
       },
+      {
+        title: "Change Password",
+        icon: <SettingsIcon />,
+        link: "/changepassword",
+      },
     ],
   },
 ];
